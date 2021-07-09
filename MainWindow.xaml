@@ -1,0 +1,53 @@
+﻿<Window x:Class="woodcalc_00.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+        xmlns:viewmodels="clr-namespace:woodcalc_00._viewmodel" 
+        xmlns:view="clr-namespace:woodcalc_00._view._userControls"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="Lumber calculator" Height="500" Width="1500" MinHeight="650" MinWidth="660" 
+>
+
+    <Window.DataContext>
+        <viewmodels:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:CalculationViewModel}">
+            <view:CalculationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:SettingsUCViewModel}">
+            <view:SettingsUC/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ExportViewModel}">
+            <view:ExportView/>
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="5" Background="{StaticResource BrushPrimary2}">
+            <RadioButton Grid.Column="0" Content="Kalkulace" Command="{Binding Path=DisplayCalculation}" Style="{StaticResource NavButton}" IsChecked="True"/>
+            <RadioButton Grid.Column="1" Content="Export dat" Command="{Binding Path=DisplayExportWindow}" Style="{StaticResource NavButton}"/>
+            <RadioButton Grid.Column="2" Content="Nastavení" Command="{Binding Path=DisplaySettings}" Style="{StaticResource NavButton}"/>
+        </StackPanel>
+        <ContentControl Content="{Binding Path=ViewModel}" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="2"/>
+    </Grid>  
+
+
+</Window>

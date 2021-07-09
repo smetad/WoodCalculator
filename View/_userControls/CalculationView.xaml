@@ -1,0 +1,401 @@
+﻿<UserControl x:Class="woodcalc_00._view._userControls.CalculationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:woodcalc_00._viewmodel"
+             d:DataContext="{d:DesignInstance Type=viewModel:CalculationViewModel}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+        <Style x:Key="stcpnl_Left" TargetType="{x:Type StackPanel}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Orientation" Value="Vertical"/>
+            <Setter Property="Width" Value="110"/>
+            <Setter Property="Margin" Value="5,2.5,2.5,5"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MinHeight" Value="25"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="{x:Type Border}" x:Key="customBorder">
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="BorderBrush" Value="#189ab4"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MinWidth="1"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition MinHeight="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <!--#region LeftSide-->
+        <!--leva_strana-->
+
+        <Border Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource customBorder}" Margin="5" Width="370">
+            <WrapPanel Name="WP_calValues" Width="360" HorizontalAlignment="Center" Grid.Row="0" Grid.RowSpan="7">
+                <StackPanel Orientation="Horizontal"  Width="350" Margin="5,5">
+                    <TextBlock Text="Výpočet dle: " Width="Auto" Padding="5" FontSize="14"/>
+                    <ComboBox x:Name="cbCalMethods" Width="155" VerticalAlignment="Center"
+                              SelectedItem="{Binding Path=SelectedCalculation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                              SelectedIndex="{Binding Path=DefaultIndex, Mode=OneWay}"
+                              ItemsSource="{Binding Path=CalculationMethods}" FontSize="14">
+                    </ComboBox>
+                    <Button Height="24.5" Width="25" Margin="80,0" Background="White" BorderThickness="0" ToolTip="Vyčistit formulář"
+                            Command="{Binding ClearCommand}">
+                        <Image Source="/Icon/delete-property-32.png"/>
+                    </Button>
+                </StackPanel>
+                <!--Objem-->
+                <StackPanel Style="{StaticResource stcpnl_Left}" Width="350" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Width="170">
+                        <TextBlock Text="Objem" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,5,10,5"
+                               Width="Auto" Padding="0,0,0,0" FontSize="16">
+                        </TextBlock>
+                        <TextBlock Name="volume" Width="Auto" MinWidth="30"  FontSize="16"
+                                   TextAlignment="Center" HorizontalAlignment="Center"
+                                   Text="{Binding Mode=Default, Path=CurrectDeliveredClass.Volume, UpdateSourceTrigger=PropertyChanged}"                                                                      />
+                        <TextBlock Text="m³" Padding="10,0" FontSize="16"/>
+                    </StackPanel>
+                    <!--cena-->
+                    <StackPanel x:Name="stckpnl_Price" Orientation="Horizontal" Width="170" Visibility="{Binding Path=PriceBox, Converter={StaticResource BoolToVis}}">
+                        <TextBlock Text="Cena" Margin="5" FontSize="16"/>
+                        <TextBlock x:Name="price" TextAlignment="Center" Width="Auto" FontSize="16" MinWidth="30"
+                                   Text="{Binding Path=CurrectDeliveredClass.LogValue, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock  FontSize="16" Padding="3,0">
+                           Kč
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <!--48 0009 typ dreviy-->
+                <StackPanel Name="sp_TreeClass" Width="170">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}" >
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0009">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBlock Text="Skupina dřeviny"/>
+                    <ComboBox Width="{Binding ElementName=sp_TreeClass, Path=Width}" Height="25" FontSize="14" 
+                              SelectedIndex="{Binding CurrectDeliveredClass.SelectedTreeClass, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                              ItemsSource="{Binding CurrectDeliveredClass.TreeClasses}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:CallMethodAction TargetObject="{Binding}" MethodName="TreeListSelectionChanged"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </StackPanel>
+
+                <!--prumer cepu-->
+                <StackPanel Name="sp_Diameter_Bottom" Width="{Binding ElementName=sp_Diameter_Bottom, Path=Width}">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}" >
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="Huberův vzorec">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0007">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0009">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBlock>Čepová tloušťka (cm)</TextBlock>
+                    <TextBox Name="diameterBottom" Width="{Binding ElementName=sp_Diameter_Top, Path=Width}" HorizontalAlignment="Left"
+                         ToolTip="Tloušťka měřená na tenkém konci (čepu) v centimetrech"
+                         Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=CurrectDeliveredClass.DiameterBottom, Delay=250}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewTextInput">
+                                <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
+
+                <!--prumer uprostred-->
+                <StackPanel Name="sp_Diameter_Middle" Width="{Binding ElementName=SP_length, Path=Width}">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="Smalianův vzorec">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBlock ToolTip="Tlošťka měřená uprostřed kulatiny v centimetrech">Středová tloušťka (cm)</TextBlock>
+                    <TextBox Name="diameterMiddle"  TextAlignment="Center"                                                                    
+                         Width="{Binding ElementName=sp_Diameter_Middle, Path=Width}"
+                         Text="{Binding Mode=Default, UpdateSourceTrigger=PropertyChanged, Path=CurrectDeliveredClass.DiameterMiddle, Delay=1000}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewTextInput">
+                                <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
+
+                <!--prumer cela-->
+                <StackPanel Name="sp_Diameter_Top" Width="{Binding ElementName=SP_length, Path=Width}">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="Huberův vzorec">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0007">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0009">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBlock ToolTip="Tloušťka měřená na tlustém konci v centimetrech">Čelová tloušťka (cm)</TextBlock>
+                    <TextBox Name="diameterTop" TextAlignment="Center"                                                                 
+                                  Width="{Binding ElementName=sp_Diameter_Bottom, Path=Width}"
+                                  Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=CurrectDeliveredClass.DiameterTop, Delay=250}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewTextInput">
+                                <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
+
+                <!--delka-->
+                <StackPanel Name="SP_length" Style="{StaticResource stcpnl_Left}" Width="170">
+                    <TextBlock ToolTip="Délka kulatiny v metrech">Délka (m)</TextBlock>
+                    <TextBox Name="length"  TextAlignment="Center"                         
+                         Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=CurrectDeliveredClass.TreeLength, Delay=250, Mode=TwoWay}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewTextInput">
+                                <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="spckpnl_typeOfTree2">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0009">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="Width" Value="170"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBlock>
+                                Druh dřeviny
+                    </TextBlock>
+                    <ComboBox  IsReadOnly="True" FontSize="14" MinHeight="25"
+                               Width="{Binding ElementName=spckpnl_typeOfTree2, Path=Width}" 
+                               ItemsSource="{Binding Path=TypeOfTreeList}"
+                               SelectedItem="{Binding CurrectDeliveredClass.TypeOfTree, Mode=OneWayToSource}"
+                               SelectedIndex="{Binding TypeOfTreeSelectedIndex, Mode=TwoWay}">
+                    </ComboBox>
+                </StackPanel>
+
+                <!--#region doplnkove nastaveni-->
+                <WrapPanel>
+                    <!--Druh stromu-->
+                    <StackPanel x:Name="spckpnl_typeOfTree">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}">
+                                <Setter Property="Visibility" Value="{Binding Path=TypeOfTreeBox, Converter={StaticResource BoolToVis}}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0009">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <TextBlock>
+                                Druh dřeviny
+                        </TextBlock>
+                        <ComboBox IsReadOnly="True" FontSize="14" MinHeight="25"
+                               Width="{Binding ElementName=spckpnl_typeOfTree, Path=Width}" 
+                               ItemsSource="{Binding Path=TypeOfTreeList}"
+                               SelectedItem="{Binding CurrectDeliveredClass.TypeOfTree}"
+                               SelectedIndex="{Binding TypeOfTreeSelectedIndex, Mode=TwoWay}">
+                        </ComboBox>
+                    </StackPanel>
+                    <!-- kura-->
+                    <StackPanel Name="spcpnl_Bark">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel" BasedOn="{StaticResource stcpnl_Left}">
+                                <Setter Property="Visibility" Value="{Binding Path=BarkBox, Converter={StaticResource BoolToVis}}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=CurrectDeliveredClass.TypeOfCalculation}" Value="ČSN 48 0009">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <TextBlock>Tloušťka kůry</TextBlock>
+                        <TextBox Text="{Binding CurrectDeliveredClass.Bark, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Delay=1000, StringFormat=0.0}" 
+                                       ToolTip="Tloušťka kůry v centimetrech"
+                                      TextAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </StackPanel>
+                    <!--Kvalita-->
+                    <StackPanel x:Name="stckpnl_quality" Style="{StaticResource stcpnl_Left}"
+                                    Visibility="{Binding Path=QualityBox, Converter={StaticResource BoolToVis}}">
+                        <TextBlock>
+                                Jakost
+                        </TextBlock>
+                        <ComboBox Width="{Binding ElementName=stckpnl_quality, Path=Width}"
+                              IsReadOnly="True" Padding="2.5" FontSize="14" MinHeight="25"
+                               ItemsSource="{Binding Path=QualityList}"
+                               SelectedItem="{Binding Path=CurrectDeliveredClass.Quality, Mode=TwoWay}"
+                                  SelectedIndex="{Binding QualitySelectedIndex, Mode=TwoWay}"
+                              HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                        </ComboBox>
+                    </StackPanel>
+                    <!--Poznamka-->
+                    <StackPanel Style="{StaticResource stcpnl_Left}" Name="spcpnl_Tag" Width="347" 
+                            Orientation="Vertical" Visibility="{Binding Path=TagBox, Converter={StaticResource BoolToVis}}">
+                        <TextBlock>Poznámka</TextBlock>
+                        <TextBox Text="{Binding CurrectDeliveredClass.Tag, UpdateSourceTrigger=PropertyChanged}" 
+                                 ToolTip="Počet kusů se stejnými parametry"
+                                 TextAlignment="Left">
+                        </TextBox>
+                    </StackPanel>
+                </WrapPanel>
+                <!--</Expander>-->
+                <!--#endregion-->
+                <!--Tlacitka-->
+                <DockPanel  Name="SP_Buttons"  HorizontalAlignment="Center"  Height="30" Width="350" Margin="5,5,5,2.5">
+                    <Button Name="addButton"  Style="{StaticResource styledButton}"
+                        Width="350" IsDefault="True"
+                        Command="{Binding Path=SaveChangesCommand}" Content="{Binding ButtonText}">
+                    </Button>
+                </DockPanel>
+            </WrapPanel>
+        </Border>
+        <!--<Border Style="{StaticResource customBorder}" Grid.Row="4" Grid.RowSpan="2" Margin="5,0,5,5">-->
+            
+        <!--</Border>-->
+        <!--#endregion-->
+        <!--Prava strana-->
+        <!--Zobrazení dat-->
+        <Border Style="{StaticResource customBorder}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="5" Margin="0,5,5,0">
+            <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" x:Name="logDataGrid" ItemsSource="{Binding Data}" 
+                      RowHeaderWidth="20" GridLinesVisibility="Horizontal" BorderThickness="0"
+                      CanUserAddRows="False" CanUserReorderColumns="True" LoadingRow="LogDataGrid_LoadingRow"
+                      AutoGenerateColumns="False" MinColumnWidth="100" VerticalAlignment="Top" AlternationCount="{Binding Data.Count}"
+                      IsReadOnly="True"
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="{x:Type DataGridRowHeader}" BasedOn="{StaticResource baseStyle}">
+                        <Setter Property="Content" Value="{Binding Path=AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+                    </Style>
+                </DataGrid.RowHeaderStyle>
+                <DataGrid.Columns>
+                <DataGridTextColumn 
+                            Header="Průměr čela" Width="*"
+                            Binding="{Binding Path=DiameterTop, StringFormat=0.# cm}" 
+                            Visibility="{Binding Source={x:Reference Name=sp_Diameter_Top}, Path=Visibility}"/>
+                    <DataGridTextColumn Binding="{Binding Path=DiameterMiddle, StringFormat=0.# cm}" Header="Průměr uprostřed" Width="*"
+                                                Visibility="{Binding Source={x:Reference Name=sp_Diameter_Middle}, Path=Visibility}"/>
+                <DataGridTextColumn Binding="{Binding Path=DiameterBottom, StringFormat=0.# cm}" Header="Průměr čepu" Width="*"
+                                                Visibility="{Binding Source={x:Reference Name=sp_Diameter_Bottom}, Path=Visibility}"/>
+                    <DataGridTextColumn Binding="{Binding Path=Length, StringFormat=0.# m}" Header="Délka" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Volume, StringFormat=0.############## m³}" Header="Objem" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Bark, StringFormat=0.# cm}" Header="Kůra" Width="*" Visibility="{Binding Source={x:Reference Name=spcpnl_Bark}, Path=Visibility}"/>
+                    <DataGridTextColumn Binding="{Binding Path=Tree.TypeOfTree}" Header="Druh dřeviny" Width="*" Visibility="{Binding Source={x:Reference Name=spckpnl_typeOfTree}, Path=Visibility}"/>
+                    <DataGridTextColumn Binding="{Binding Path=Tree.TypeOfTree}" Header="Druh dřeviny" Width="*" Visibility="{Binding Source={x:Reference Name=spckpnl_typeOfTree2}, Path=Visibility}"/>
+                    <DataGridTextColumn Binding="{Binding Path=Quality.QualityClass}" Header="Jakost" Width="*" Visibility="{Binding Source={x:Reference Name=stckpnl_Price}, Path=Visibility}"/>
+                <DataGridTextColumn Binding="{Binding Path=Value, StringFormat=##### Kč}" Header="Cena" Width="*" Visibility="{Binding Source={x:Reference Name=stckpnl_Price}, Path=Visibility}"/>
+                <DataGridTextColumn Binding="{Binding Path=Tag}" Header="Poznámka" Width="*"
+                                                Visibility="{Binding Source={x:Reference Name=spcpnl_Tag}, Path=Visibility}"/>
+                <DataGridTemplateColumn MaxWidth="50">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                                <Button Background="Transparent" x:Name="DG_edit_button" BorderThickness="0" ToolTip="Upravit výpočet"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.EditCommand}" CommandParameter="{Binding}">
+                                <Image Source="/Icon/edit-2-16.png"/> 
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--delete column-->
+                <DataGridTemplateColumn MaxWidth="50">
+                        <DataGridTemplateColumn.Header>
+                            <Button Background="Transparent" BorderThickness="0" ToolTip="Smazat veškeré záznamy" x:Name="btnDeleteAll"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteAllCommand}" CommandParameter="{Binding}"
+                                    Click="Button_Click">
+                                <Image Source="/Icon/delete-48.png"/>
+                            </Button>
+                        </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                                <Button Background="Transparent" x:Name="DG_delete_button" BorderThickness="0" ToolTip="Smazat výpočet"
+                                   Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteCommand}" CommandParameter="{Binding}" >
+                                    <Image Source="/Icon/delete-2-16.png"/>
+                                </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </Border>
+        <!--spodni panel-->
+        <Border VerticalAlignment="Center"
+                Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Height="40" Margin="0,5,5,5" Style="{StaticResource customBorder}">
+            <DockPanel HorizontalAlignment="Stretch" Width="{Binding ElementName=logDataGrid, Path=Width}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="15,0">
+                    <TextBlock FontSize="16">Celkový objem:</TextBlock>
+                    <TextBlock FontSize="16" Padding="5,5" Text="{Binding TotalVolume}"/>
+                    <TextBlock FontSize="16" Text="m³"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="15,0" Visibility="{Binding ElementName=stckpnl_Price, Path=Visibility}">
+                    <TextBlock FontSize="16">Celková hodnota:</TextBlock>
+                    <TextBlock FontSize="16" Padding="5,5" Text="{Binding TotalPrice}"/>
+                    <TextBlock FontSize="16" Text="Kč"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

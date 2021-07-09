@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="woodcalc_00._viewmodel.BaseViewModel" Collapsed="true">
+    <Position X="33.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Viewmodel\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._viewmodel.CalculationViewModel">
+    <Position X="30.25" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAAkwMFAARGFgIkIIAMBABKAgQBAAAkA6AIIQJQA=</HashCode>
+      <FileName>Viewmodel\CalculationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._viewmodel.ExportViewModel">
+    <Position X="34.75" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQIAAAAAEAAAAAMAAAACCAACIAgAAAAABAgAgAAAAYA=</HashCode>
+      <FileName>Viewmodel\ExportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._viewmodel.MainWindowViewModel">
+    <Position X="28" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAIBEAAAAQAQAAAAQAABAEAAAAAAAAAAACAAABAI=</HashCode>
+      <FileName>Viewmodel\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._viewmodel.SettingsUCViewModel">
+    <Position X="32.5" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAABEQACAERCCAAAAAEAAAAAAAAAAgAQAAAAAAAAA=</HashCode>
+      <FileName>Viewmodel\SettingsViewModel .cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.VolumeCalculation">
+    <Position X="11" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AUEBCiEgA0AkEkBAgEBAOAAAISAAABgAAApIEABCAQA=</HashCode>
+      <FileName>Logic\VolumeCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.CSN480007">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\CSN480007.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.DataExport">
+    <Position X="18.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAABAAA=</HashCode>
+      <FileName>Logic\DataExport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.Huber">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Huber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.Newton">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Newton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.Smalian">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Smalian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00._model.NotifyPropertyChanged" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\NotifyPropertyChanged.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="woodcalc_00._service.LogDataService">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABgAAEAAAAAAAEgAABAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\DataServices\LogDataService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="woodcalc_00.Service.DataServices.DataService&lt;T&gt;">
+    <Position X="1.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\DataServices\DataService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="woodcalc_00.Service.DataServices.CalculationService">
+    <Position X="1" Y="11.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Service\CalculationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Service.TreeService">
+    <Position X="3" Y="11.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAEABAAAAAAAAAAAAgAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Service\TreeService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Service.BaseService&lt;T&gt;">
+    <Position X="4.25" Y="8.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAgAgAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Service\BaseService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Logic.CSN480009">
+    <Position X="11" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Logic\CSN480009.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Calculation">
+    <Position X="9.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\Calculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Log">
+    <Position X="16.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAAAAAAACgAABAAAAAIABAAEAAAAAAAAIoAAAAAAA=</HashCode>
+      <FileName>Model\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.LogContext">
+    <Position X="20.5" Y="13.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQEAAAAACAAAAAAAEEAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\LogContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Tree">
+    <Position X="11.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAAAAAAAAAAAAAABAAAAAAAE=</HashCode>
+      <FileName>Model\Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Model.CalculationParameters">
+    <Position X="18.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAQgAEBAAgAQAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CalculationParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Model.Entity">
+    <Position X="14" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Model.Quality">
+    <Position X="14" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Quality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Service.CalculationParametersService">
+    <Position X="5" Y="11.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgAAAAgACAAAA=</HashCode>
+      <FileName>Service\CalculationParametersService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="woodcalc_00.Service.QualityService">
+    <Position X="7.5" Y="11.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Service\QualityService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="woodcalc_00.Service.DataServices.IDataService&lt;T&gt;">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service\DataServices\IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="woodcalc_00.Service.DataServices.ILogDataService">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAEAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\DataServices\ILogDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="woodcalc_00._view._userControls.SettingsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:_viewmodel="clr-namespace:woodcalc_00._viewmodel" d:DataContext="{d:DesignInstance Type=_viewmodel:SettingsUCViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1300"             
+             >
+    <UserControl.Resources>
+     
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MinHeight" Value="25"/>
+            <Setter Property="MinWidth" Value="25"/>
+        </Style>
+        <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="BorderBrush" Value="{StaticResource BrushPrimary1}"/>
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="5">
+            <DockPanel>
+                <GroupBox Header="Nastavení" DockPanel.Dock="Left">
+                   <WrapPanel>
+                      <StackPanel x:Name="spMain" Width="305" Height="250" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top">
+                            <StackPanel Orientation="Horizontal" 
+                                Margin="5"
+                                DockPanel.Dock="Top">
+                                <TextBlock>
+                            Výchozí metoda výpočtu:
+                                </TextBlock>
+                                <ComboBox SelectedIndex="{Binding Path=DefalutCalculationMethod, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                               
+                                  Margin="5,0,0,0" ItemsSource="{Binding CalculationMethods}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" x:Name="stcpn_decialCount"
+                                DockPanel.Dock="Top" Margin="5,5,5,0">
+                                <TextBlock Width="{Binding ElementName=stcpn_decialCount, Path=Height}">
+                            Počet desetinných míst ve výpočtu:
+                                </TextBlock>
+                                <TextBox Text="{Binding Path=DecimalPlacesCount, UpdateSourceTrigger=Default}"
+                                 Width="Auto" Margin="5,0,0,0"
+                                 TextAlignment="Center">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewTextInput">
+                                            <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBox>
+                            </StackPanel>
+                            <GroupBox DockPanel.Dock="Top" Margin="5,5,5,0" FontSize="14" Padding="0">
+                                <GroupBox.Header>
+                                    <CheckBox x:Name="barkIsActive" Content="Zahrnutí kůry do výpočtu" IsChecked="{Binding Path=BarkBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="14"/>
+                                </GroupBox.Header>
+                                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" x:Name="sp_bark"
+                                    IsEnabled="{Binding ElementName=barkIsActive, Path=IsChecked}">
+                                    <Label Margin="5,0,0,0" VerticalAlignment="Center">
+                                        Výchozí tloušťka kůry:
+                                    </Label>
+                                    <TextBox Text="{Binding Path=DefaultThickness, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" 
+                                         Width="50" Margin="5,0,5,0"
+                                         TextAlignment="Center"                                    >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PreviewTextInput">
+                                                <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <Label VerticalAlignment="Center">
+                                        cm
+                                    </Label>
+                                </StackPanel>
+                            </GroupBox>
+                            <!--<CheckBox IsChecked="{Binding AddMoreItemsBox, UpdateSourceTrigger=PropertyChanged}" 
+                              DockPanel.Dock="Top" Visibility="Collapsed"
+                              Margin="14,5,5,0">
+                                <TextBlock>
+                                    Přidat více položek součastně
+                                </TextBlock>
+                            </CheckBox>-->
+                            <CheckBox Content="Aktivovat  jakostní třídy" 
+                              IsChecked="{Binding Path=QualityBox, Mode=TwoWay}" 
+                              DockPanel.Dock="Top"
+                               Margin="14,5,5,0"/>
+                            <CheckBox Content="Aktivovat pole pro poznámky" 
+                              IsChecked="{Binding Path=TagBox, Mode=TwoWay}" 
+                              DockPanel.Dock="Top"
+                               Margin="14,5,5,0"/>                            
+                            <CheckBox Content="Aktivovat druhy stromů" 
+                              IsChecked="{Binding Path=TypeOfTreeBox, Mode=TwoWay}" 
+                              DockPanel.Dock="Top"
+                               Margin="14,5,5,0"/>
+                            <GroupBox DockPanel.Dock="Top" Margin="5,5">
+                                <GroupBox.Header>
+                                    <CheckBox x:Name="chckbxPrice" Content="Výpočet ceny za m³" IsChecked="{Binding PriceBox, Mode=TwoWay}"/>
+                                </GroupBox.Header>
+                                <StackPanel Orientation="Horizontal" Margin="{Binding ElementName=sp_bark, Path=Margin}" IsEnabled="{Binding ElementName=chckbxPrice, Path=IsChecked}">
+                                    <Label IsEnabled="{Binding ElementName=chckbxPrice, Path=IsChecked}" VerticalAlignment="Center">
+                                        Cena za m³:
+                                    </Label>
+                                    <TextBox  Width="60" Text="{Binding Path=PriceCalculation, Mode=TwoWay, UpdateSourceTrigger=LostFocus}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PreviewTextInput">
+                                                <i:CallMethodAction TargetObject="{Binding}" MethodName="Decimal_Checker" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <Border/>
+                    </StackPanel>
+                            <!--<GroupBox  Margin="5,5,0,0" HorizontalAlignment="Left" Height="221" VerticalAlignment="Top">
+                                <GroupBox.Header>
+                                    <CheckBox x:Name="chckbxTypeOfTree" Margin="5,0,0,0"
+                                              Content="Druhy stromů" 
+                                              IsChecked="{Binding Path=TypeOfTreeBox, UpdateSourceTrigger=PropertyChanged}" FontSize="14"/>
+                                </GroupBox.Header>
+                                <StackPanel IsEnabled="{Binding ElementName=chckbxTypeOfTree, Path=IsChecked}" x:Name="sp_typeOfTree"
+                                        Margin="5" MaxHeight="187" Width="330" 
+                                        VerticalAlignment="Top" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Margin="0,0,5,0" Width="150"
+                                                 x:Name="tbTypeOfTree"  
+                                                 Text="{Binding Path=SelectedTreeType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}">
+                                            <TextBox.InputBindings>
+                                                <KeyBinding Command="{Binding Path=AddToListCommand}" Key="Enter" />
+                                            </TextBox.InputBindings>
+                                        </TextBox>
+                                        <Button Width="80" Content="Přidat" Margin="5,0,5,0" Style="{StaticResource styledButton}"
+                                                Command="{Binding Path=AddToListCommand}" CommandParameter="{Binding SelectedTreeType}"/>
+                                    <Button Width="80" Content="Odebrat" Margin="5,0,5,0" Style="{StaticResource styledButton}"
+                                                Command="{Binding Path=RemoveFromListCommand}" CommandParameter="{Binding SelectedTreeType}"/>
+                                    </StackPanel>
+                                    <ListBox x:Name="lbTypeOfTree" 
+                                             ItemsSource="{Binding Path=TypeOfTrees, UpdateSourceTrigger=Default, Mode=Default}" 
+                                             SelectedItem="{Binding Path=SelectedTreeType}"
+                                             Width="330" HorizontalAlignment="Left" Margin="0,5,0,0" 
+                                             Height="157"
+                                             ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                    </ListBox>
+                                </StackPanel>
+                            </GroupBox>-->
+                  </WrapPanel>
+                </GroupBox>
+            </DockPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
