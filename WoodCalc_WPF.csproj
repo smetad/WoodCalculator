@@ -47,6 +47,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WoodCalc.Domain\WoodCalc_Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Icon\delete-2-16.png" />
     <Resource Include="Icon\delete-48.png" />
     <Resource Include="Icon\delete-property-32.png" />

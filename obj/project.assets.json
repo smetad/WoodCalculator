@@ -1710,6 +1710,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "WoodCalc_Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WoodCalc_Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WoodCalc_Library.dll": {}
+        }
       }
     }
   },
@@ -5808,6 +5818,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "WoodCalc_Library/1.0.0": {
+      "type": "project",
+      "path": "../WoodCalc.Domain/WoodCalc_Library.csproj",
+      "msbuildProject": "../WoodCalc.Domain/WoodCalc_Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5816,7 +5831,8 @@
       "Microsoft.EntityFrameworkCore >= 5.0.3",
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.3",
-      "Microsoft.Xaml.Behaviors.Wpf >= 1.1.31"
+      "Microsoft.Xaml.Behaviors.Wpf >= 1.1.31",
+      "WoodCalc_Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5855,7 +5871,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\smeta\\Source\\Repos\\WoodCalc.Domain\\WoodCalc_Library.csproj": {
+              "projectPath": "C:\\Users\\smeta\\Source\\Repos\\WoodCalc.Domain\\WoodCalc_Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
