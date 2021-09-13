@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\Users\smety\OneDrive - Jihočeská univerzita v Českých Budějovicích\_BP\woodcalc_00\obj\Debug\netcoreapp3.1\
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\
 woodcalc_00
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\smety\OneDrive - Jihočeská univerzita v Českých Budějovicích\_BP\woodcalc_00\App.xaml
+C:\Users\smeta\Source\Repos\WoodCalculator\App.xaml
 7-301492084
 
 43515013355
-224-2117881776
+2241127573150
 MainWindow.xaml;Styles\Base.xaml;Styles\DataGridStyle.xaml;Styles\NavButton.xaml;View\_userControls\CalculationView.xaml;View\_userControls\ExportView.xaml;View\_userControls\SettingsUC.xaml;
 
-False
+True
 

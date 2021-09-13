@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Reflection;
 using System.Windows.Controls;
-using woodcalc_00._model;
+using WoodCalc_WPF._model;
 
-namespace woodcalc_00._viewmodel
+namespace WoodCalc_WPF._viewmodel
 {
     public abstract class BaseViewModel : NotifyPropertyChanged
     {
-        //List s nazvy metod pro vypocet objemu pro combobox
+        /// <summary>
+        /// Calculation method names used in combobox
+        /// </summary>
         public List<string> CalculationMethods { get; set; }
 
-        //Kontrola vstupnich hodnot - omezeni na desetinna cisla
+        //Event for checking input values; only decimal numbers allowed
         public void Decimal_Checker(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             bool approvedDecimalPoint = false;

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace woodcalc_00._model
+namespace WoodCalc_WPF._model
 {
     public abstract class NotifyPropertyChanged : INotifyPropertyChanged
     {

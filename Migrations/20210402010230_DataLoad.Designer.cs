@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using woodcalc_00;
+using WoodCalc_WPF;
 
-namespace woodcalc_00.Migrations
+namespace WoodCalc_WPF.Migrations
 {
     [DbContext(typeof(LogContext))]
     [Migration("20210402010230_DataLoad")]

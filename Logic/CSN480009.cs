@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using woodcalc_00._model;
-using woodcalc_00.Model;
-using woodcalc_00.Service;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF._model;
+using WoodCalc_WPF.Model;
+using WoodCalc_WPF.Service;
+using WoodCalc_WPF.Service.DataServices;
 
-namespace woodcalc_00.Logic
+namespace WoodCalc_WPF.Logic
 {
 
     public class CSN480009 : VolumeCalculation

@@ -1,20 +1,20 @@
 ﻿woodcalc_00
 
 
-winexe
+exe
 C#
 .cs
-C:\Users\smety\OneDrive - Jihočeská univerzita v Českých Budějovicích\_BP\woodcalc_00\obj\Release\netcoreapp3.1\
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Release\netcoreapp3.1\
 woodcalc_00
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\smety\OneDrive - Jihočeská univerzita v Českých Budějovicích\_BP\woodcalc_00\App.xaml
+C:\Users\smeta\Source\Repos\WoodCalculator\App.xaml
 7-301492084
 
-41-1379501422
-224-2034108497
+43515013355
+2241211346429
 MainWindow.xaml;Styles\Base.xaml;Styles\DataGridStyle.xaml;Styles\NavButton.xaml;View\_userControls\CalculationView.xaml;View\_userControls\ExportView.xaml;View\_userControls\SettingsUC.xaml;
 
-False
+True
 

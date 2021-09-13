@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using woodcalc_00.Model;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF.Model;
+using WoodCalc_WPF.Service.DataServices;
 
-namespace woodcalc_00.Service
+namespace WoodCalc_WPF.Service
 {
     public class QualityService : BaseService<Quality>
     {

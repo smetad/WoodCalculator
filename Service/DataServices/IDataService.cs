@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace woodcalc_00.Service.DataServices
+namespace WoodCalc_WPF.Service.DataServices
 {
     public interface IDataService<T>
     {

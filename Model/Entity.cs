@@ -1,4 +1,4 @@
-﻿namespace woodcalc_00.Model
+﻿namespace WoodCalc_WPF.Model
 {
     public class Entity
     {

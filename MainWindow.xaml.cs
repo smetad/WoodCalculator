@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace woodcalc_00
+namespace WoodCalc_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

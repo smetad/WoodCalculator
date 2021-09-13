@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using WoodCalc_WPF.Properties;
+using WoodCalc_WPF.Service.DataServices;
 
-using woodcalc_00.Properties;
-using woodcalc_00.Service.DataServices;
-
-namespace woodcalc_00._viewmodel
+namespace WoodCalc_WPF._viewmodel
 {
     public class SettingsUCViewModel : BaseViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace woodcalc_00.Migrations
+namespace WoodCalc_WPF.Migrations
 {
     public partial class TreeTest : Migration
     {

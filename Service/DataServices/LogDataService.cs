@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF.Service.DataServices;
 
-namespace woodcalc_00._service
+namespace WoodCalc_WPF._service
 {
     public class LogDataService : ILogDataService
     {

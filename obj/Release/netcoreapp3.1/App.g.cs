@@ -48,7 +48,7 @@ namespace woodcalc_00 {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.4.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
@@ -60,7 +60,7 @@ namespace woodcalc_00 {
             
             #line default
             #line hidden
-            System.Uri resourceLocater = new System.Uri("/woodcalc_00;component/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WoodCalc_WPF;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -74,7 +74,7 @@ namespace woodcalc_00 {
         /// </summary>
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.4.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
         public static void Main() {
             woodcalc_00.App app = new woodcalc_00.App();
             app.InitializeComponent();

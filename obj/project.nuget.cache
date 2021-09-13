@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p6Y+DATrz8F0sv9KSgtQREzvt5S0+4LlrSbxSjrEUYxz9R45NfCb7Ei/dH9ont72Od+rwaOdLX0uG445dBNSpg==",
+  "dgSpecHash": "r8xMFfPxVgd+tIxvI1zEBBowOrQUQOTQUQyVw268kHBS1JSXEuVArDP4hrmrHXHOVi4DBWIb3LIxRT9WzE5pZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\smeta\\OneDrive - Jihočeská univerzita v Českých Budějovicích\\_BP\\woodcalc_00\\woodcalc_00.csproj",
+  "projectFilePath": "C:\\Users\\smeta\\Source\\Repos\\WoodCalculator\\WoodCalc_WPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\smeta\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\smeta\\.nuget\\packages\\documentformat.openxml\\2.7.2\\documentformat.openxml.2.7.2.nupkg.sha512",

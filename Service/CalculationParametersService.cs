@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using woodcalc_00.Model;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF.Model;
+using WoodCalc_WPF.Service.DataServices;
 
-namespace woodcalc_00.Service
+namespace WoodCalc_WPF.Service
 {
     class CalculationParametersService : BaseService<CalculationParameters>
     {

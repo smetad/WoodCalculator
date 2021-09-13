@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Input;
-using woodcalc_00._model;
-using woodcalc_00._service;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF._model;
+using WoodCalc_WPF._service;
+using WoodCalc_WPF.Service.DataServices;
 
-namespace woodcalc_00._viewmodel
+namespace WoodCalc_WPF._viewmodel
 {
     public class ExportViewModel : BaseViewModel
     {

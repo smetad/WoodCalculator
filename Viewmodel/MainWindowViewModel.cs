@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace woodcalc_00._viewmodel
+namespace WoodCalc_WPF._viewmodel
 {
     class MainWindowViewModel : BaseViewModel
     {

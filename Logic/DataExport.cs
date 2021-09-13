@@ -1,9 +1,9 @@
 ﻿using ClosedXML.Excel;
 using System.Collections.Generic;
 using System.IO;
-using woodcalc_00.Model;
+using WoodCalc_WPF.Model;
 
-namespace woodcalc_00._model
+namespace WoodCalc_WPF._model
 {
     public class DataExport : NotifyPropertyChanged
     {

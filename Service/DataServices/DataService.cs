@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using woodcalc_00.Model;
+using WoodCalc_WPF.Model;
 
-namespace woodcalc_00.Service.DataServices
+namespace WoodCalc_WPF.Service.DataServices
 {
     public class DataService<T> : IDataService<T> where T : Entity
     {

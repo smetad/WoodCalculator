@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace woodcalc_00._view._userControls
+namespace WoodCalc_WPF._view._userControls
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml

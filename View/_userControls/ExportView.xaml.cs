@@ -3,7 +3,7 @@ using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Controls;
 
-namespace woodcalc_00._view._userControls
+namespace WoodCalc_WPF._view._userControls
 {
     /// <summary>
     /// Interakční logika pro ExportView.xaml

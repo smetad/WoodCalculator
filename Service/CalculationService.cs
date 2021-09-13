@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-namespace woodcalc_00.Service.DataServices
+namespace WoodCalc_WPF.Service.DataServices
 {
     public class CalculationService : BaseService<Calculation>
     {
@@ -10,10 +10,10 @@ namespace woodcalc_00.Service.DataServices
         {
             this.dataService = dataService;
         }
-        public override int FindId(Calculation enitiy)
+        public override int FindId(Calculation entity)
         {
             List<Calculation> list = new List<Calculation>(dataService.GetAll()); 
-            return list[list.FindIndex(x => x.TypeOfCalculation == enitiy.TypeOfCalculation)].Id;
+            return list[list.FindIndex(x => x.TypeOfCalculation == entity.TypeOfCalculation)].Id;
         }
     }
 }

@@ -1,0 +1,13 @@
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\WoodCalc.WPF.csproj.AssemblyReference.cache
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\WoodCalc.WPF.csproj.ResolveComReference.cache
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\Styles\DataGridStyle.baml
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\View\_userControls\CalculationView.g.cs
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\View\_userControls\ExportView.g.cs
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\View\_userControls\SettingsUC.g.cs
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\WoodCalc.WPF_MarkupCompile.cache
+C:\Users\smeta\Source\Repos\WoodCalculator\obj\Debug\netcoreapp3.1\WoodCalc.WPF_MarkupCompile.lref

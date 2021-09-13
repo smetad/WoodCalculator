@@ -1,4 +1,4 @@
-﻿namespace woodcalc_00.Properties
+﻿namespace WoodCalc_WPF.Properties
 {
 
 

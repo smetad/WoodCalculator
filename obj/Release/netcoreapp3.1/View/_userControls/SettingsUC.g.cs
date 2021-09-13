@@ -93,13 +93,13 @@ namespace woodcalc_00._view._userControls {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.4.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/woodcalc_00;component/view/_usercontrols/settingsuc.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WoodCalc_WPF;component/view/_usercontrols/settingsuc.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\_userControls\SettingsUC.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -109,7 +109,7 @@ namespace woodcalc_00._view._userControls {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.4.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]

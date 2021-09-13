@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace woodcalc_00._model
+namespace WoodCalc_WPF._model
 {
     class CSN480007 : VolumeCalculation
     {

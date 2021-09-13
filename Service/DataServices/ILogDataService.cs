@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace woodcalc_00.Service.DataServices
+namespace WoodCalc_WPF.Service.DataServices
 {
     interface ILogDataService : IDataService<Log>
     {

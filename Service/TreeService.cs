@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF.Service.DataServices;
 using System;
-using woodcalc_00.Model;
+using WoodCalc_WPF.Model;
 using System.Linq;
 
-namespace woodcalc_00.Service
+namespace WoodCalc_WPF.Service
 {
     public class TreeService : BaseService<Tree>
     {

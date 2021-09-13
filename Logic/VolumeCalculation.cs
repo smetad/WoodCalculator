@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using woodcalc_00._service;
-using woodcalc_00.Model;
-using woodcalc_00.Service;
-using woodcalc_00.Service.DataServices;
+using WoodCalc_WPF._service;
+using WoodCalc_WPF.Model;
+using WoodCalc_WPF.Service;
+using WoodCalc_WPF.Service.DataServices;
 
-namespace woodcalc_00._model
+namespace WoodCalc_WPF._model
 {
     public abstract class VolumeCalculation : NotifyPropertyChanged
     {
@@ -216,11 +216,18 @@ namespace woodcalc_00._model
             }
         }
         #endregion
+        /// <summary>
+        /// Calculates log volume based on selected calculation.
+        /// </summary>
         public abstract void CalculateVolume();
         public double CalculateLogValue()
         {
             return Math.Round(Price * Volume, 0);
         }
+        ///<summary>
+        ///Method that creates a new log suitable for saving into database.
+        /// </summary>
+        /// <returns>Log entity ready to be saved in database</returns>
         public Log CreateLog()
         {
             Log log = new Log()
@@ -242,6 +249,10 @@ namespace woodcalc_00._model
             };
             return log;
         }
+        /// <summary>
+        /// Saves either new or edited log into database 
+        /// </summary>
+        /// <returns></returns>
         public Log SaveLog()
         {
             Log log = CreateLog();
@@ -256,6 +267,10 @@ namespace woodcalc_00._model
             }
             return log;
         }
+        /// <summary>
+        ///  Loads selected entry.
+        /// </summary>
+        /// <param name="log">Entry to be loaded for editing</param>
         public void EditLog(Log log)
         {
             EditId = log.Id;

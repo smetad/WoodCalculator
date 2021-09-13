@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 using System.Windows.Controls;
-using woodcalc_00._viewmodel;
+using WoodCalc_WPF._viewmodel;
 
-namespace woodcalc_00._view._userControls
+namespace WoodCalc_WPF._view._userControls
 {
     /// <summary>
     /// Interaction logic for Calculation.xaml

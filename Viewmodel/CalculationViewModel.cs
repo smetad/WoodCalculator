@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
-using woodcalc_00._model;
-using woodcalc_00.Properties;
-using woodcalc_00._service;
-using woodcalc_00.Service.DataServices;
-using woodcalc_00.Model;
-using woodcalc_00.Logic;
-using System.Reflection;
+using WoodCalc_WPF._model;
+using WoodCalc_WPF.Properties;
+using WoodCalc_WPF._service;
+using WoodCalc_WPF.Service.DataServices;
+using WoodCalc_WPF.Model;
+using WoodCalc_WPF.Logic;
 using System.Windows.Controls;
 
-namespace woodcalc_00._viewmodel
+namespace WoodCalc_WPF._viewmodel
 {
     public class CalculationViewModel : BaseViewModel
     {
@@ -33,7 +31,7 @@ namespace woodcalc_00._viewmodel
         private int typeOfTreeIndex;
         private ObservableCollection<string> typeOfTreeList;
 
-        #region Properties and Commands
+        #region Commands
         //Propojeni s tlacitkem na pridani hodnoty do databaze
         public ICommand SaveChangesCommand => saveChanges ??= new RelayCommand(SaveToDB, CanAdd);
         //Propojeni s tlacitkem na smazani v tabulce 
@@ -44,8 +42,9 @@ namespace woodcalc_00._viewmodel
         public ICommand DeleteAllCommand => deleteAllCommand ??= new RelayCommand<bool>(DeleteAll);
         //nacteni dat do formulare
         public ICommand EditCommand => editCommand ??= new RelayCommand<Log>(EditLog);
-
-        public ObservableCollection<string> TypeOfTreeList 
+        #endregion
+        #region Properties
+        public ObservableCollection<string> TypeOfTreeList
         {
             get => typeOfTreeList;
             set
@@ -69,7 +68,7 @@ namespace woodcalc_00._viewmodel
                     OnPropertyChanged();
                 }
             }
-        }        
+        }
         public int TypeOfTreeSelectedIndex
         {
             get => typeOfTreeIndex;
@@ -127,7 +126,9 @@ namespace woodcalc_00._viewmodel
             }
         }
 
-        //aktualne vybrana trida pro vypocet objemu
+        /// <summary>
+        /// Currectly selected class for calculating volume.
+        /// </summary>
         public VolumeCalculation CurrectDeliveredClass
         {
             get => currectClass;
@@ -140,11 +141,13 @@ namespace woodcalc_00._viewmodel
                 }
             }
         }
-        //list se vsemi tridami pro vypocet objemu 
+        /// <summary>
+        /// All classes for calculating volume.
+        /// </summary>
         public List<VolumeCalculation> DeliveredClasses { get; }
 
         //data načtená z databáze
-        public ObservableCollection<Log> Data 
+        public ObservableCollection<Log> Data
         {
             get => data;
             set
@@ -156,6 +159,7 @@ namespace woodcalc_00._viewmodel
                 }
             }
         }
+        #endregion
         #region Settings
         public bool TypeOfTreeBox => Settings.Default.TypeOfTreeBox;
         public bool BarkBox => Settings.Default.BarkBox;
@@ -167,7 +171,6 @@ namespace woodcalc_00._viewmodel
         public bool AddMoreItemsBox => Settings.Default.AddMoreItemsBox;
 
         #endregion
-        #endregion
         public CalculationViewModel()
         {
             DeliveredClasses = new List<VolumeCalculation>() { new Huber(), new Smalian(), new Newton(), new CSN480007(), new CSN480009() };
@@ -178,7 +181,9 @@ namespace woodcalc_00._viewmodel
             TypeOfTreeSelectedIndex = -1;
             QualitySelectedIndex = -1;
         }
-        //Ulozeni do databaze
+        /// <summary>
+        /// Saves a new/edited entry to database 
+        /// </summary>
         private void SaveToDB()
         {
             Log log = CurrectDeliveredClass.SaveLog();
@@ -196,16 +201,23 @@ namespace woodcalc_00._viewmodel
                 ButtonText = "Přidat";
                 ClearForm();
             }
-        } 
+        }
 
-        //zmena vypoctu a nacteni dat
-        private void ChangeClass(string delivered_type) 
+        /// <summary>
+        /// Loads data based on selected type of calculation. 
+        /// </summary>
+        /// <param name="delivered_type">Selected calculation.</param>
+        private void ChangeClass(string delivered_type)
         {
-            CurrectDeliveredClass = (DeliveredClasses.FirstOrDefault(vm => vm.TypeOfCalculation == delivered_type));
+            CurrectDeliveredClass = DeliveredClasses.FirstOrDefault(vm => vm.TypeOfCalculation == delivered_type);
             Data = new ObservableCollection<Log>(dataService.GetLogsByCalculation(delivered_type));
             UpdateData();
             ClearForm();
         }
+        /// <summary>
+        /// Deletes all entries by selected calculation in database.
+        /// </summary>
+        /// <param name="parameter">Boolean value from UI</param>
         private void DeleteAll(bool parameter)
         {
             if (parameter)
@@ -229,7 +241,10 @@ namespace woodcalc_00._viewmodel
                 return CurrectDeliveredClass.Volume > 0;
             }
         }
-
+        /// <summary>
+        /// Deletes specific entry from database.
+        /// </summary>
+        /// <param name="log">Entry to be deleted.</param>
         private void RemoveLog(Log log)
         {
             dataService.Delete(log.Id);
@@ -264,7 +279,10 @@ namespace woodcalc_00._viewmodel
             TotalVolume = Math.Round(volume,3);
             TotalPrice = Math.Round(price,3);
         }
-        private void ClearForm() //Button for clearing the form 
+        /// <summary>
+        /// Clears the form.
+        /// </summary>
+        private void ClearForm()
         {
             CurrectDeliveredClass.DiameterBottom = 0;
             CurrectDeliveredClass.DiameterMiddle = 0;

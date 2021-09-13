@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\smeta\\OneDrive - Jihočeská univerzita v Českých Budějovicích\\_BP\\woodcalc_00\\woodcalc_00.csproj": {}
+    "C:\\Users\\smeta\\Source\\Repos\\WoodCalculator\\woodcalc_00.csproj": {}
   },
   "projects": {
-    "C:\\Users\\smeta\\OneDrive - Jihočeská univerzita v Českých Budějovicích\\_BP\\woodcalc_00\\woodcalc_00.csproj": {
+    "C:\\Users\\smeta\\Source\\Repos\\WoodCalculator\\woodcalc_00.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\smeta\\OneDrive - Jihočeská univerzita v Českých Budějovicích\\_BP\\woodcalc_00\\woodcalc_00.csproj",
+        "projectUniqueName": "C:\\Users\\smeta\\Source\\Repos\\WoodCalculator\\woodcalc_00.csproj",
         "projectName": "Lumber Calculator",
-        "projectPath": "C:\\Users\\smeta\\OneDrive - Jihočeská univerzita v Českých Budějovicích\\_BP\\woodcalc_00\\woodcalc_00.csproj",
+        "projectPath": "C:\\Users\\smeta\\Source\\Repos\\WoodCalculator\\woodcalc_00.csproj",
         "packagesPath": "C:\\Users\\smeta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\smeta\\OneDrive - Jihočeská univerzita v Českých Budějovicích\\_BP\\woodcalc_00\\obj\\",
+        "outputPath": "C:\\Users\\smeta\\Source\\Repos\\WoodCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
